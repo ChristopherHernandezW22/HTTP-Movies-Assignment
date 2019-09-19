@@ -36,6 +36,11 @@ const UpdateMovie = (props) => {
         .catch(err => console.log(err.response));
     };
 
+    const addActor = event => {
+        event.preventDefault();
+        setMovie({...movie, stars: [...movie.stars, ""]});
+    };
+
     if (!movie) {
         return <div>Loading...</div>
     }
@@ -65,6 +70,7 @@ const UpdateMovie = (props) => {
                                 key={index}
                                 onChange={handleStars(index)} />
             })}
+            <button onClick={addActor}>Add Actor</button>
             <button type="submit">Update</button>
         </form>
     );
